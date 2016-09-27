@@ -1,5 +1,3 @@
-require File.expand_path('../../../hydra/lib/hydra', __FILE__) # FIXME
-
 class Language
   @@languages = nil
   @@hyphdir = 'tex-hyphen/hyph-utf8/tex/generic/hyph-utf8/patterns/txt'

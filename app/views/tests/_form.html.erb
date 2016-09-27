@@ -1,0 +1,9 @@
+<form action="/test-patterns" method="POST">
+  <input type="text" name="word"></input>
+  <input type="submit" value="hyphenate">
+  <select name="bcp47">
+  <% Language.all.each do |language| %>
+    <option value="<%= language.last.bcp47 %>"><%= language.last.bcp47 %></option>
+  <% end %>
+  </select
+</form>

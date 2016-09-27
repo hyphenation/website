@@ -37,3 +37,11 @@ gem 'jquery-rails'
 
 # To use debugger
 # gem 'debugger'
+
+group :test, :development do
+  gem 'rspec'
+  gem 'byebug'
+end
+
+# FIXME Should be taken care of by Hydra
+gem 'unicode_utils'

@@ -1,5 +1,6 @@
 class TestsController < ApplicationController
   def show
+    @word = ''
   end
 
   def submit

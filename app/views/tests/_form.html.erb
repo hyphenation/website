@@ -2,8 +2,9 @@
   <input type="text" name="word" value="<%= @word %>"></input>
   <input type="submit" value="hyphenate">
   <select name="bcp47">
-  <% Language.all.each do |language| %>
-    <option value="<%= language.last.bcp47 %>"><%= language.last.bcp47 %></option>
+  <% @languages.each do |language| %>
+    <% bcp47 = language.last.bcp47 %>
+    <option<% if @language == language.last %> selected<% end %> value="<%= bcp47 %>"><%= bcp47 %></option>
   <% end %>
   </select
 </form>

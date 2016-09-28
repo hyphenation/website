@@ -5,7 +5,7 @@
   <input type="submit" value="hyphenate">
   <select name="bcp47">
   <% @languages.each do |language| %>
-    <% bcp47 = language.last.bcp47 %>
+    <% bcp47 = language.bcp47 %>
     <option<% if @bcp47 == bcp47 %> selected<% end %> value="<%= bcp47 %>">
       <%= bcp47 %>
     </option>

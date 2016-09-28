@@ -6,11 +6,12 @@ describe Language do
     it "sets the languages class variable" do
       expect(Language.class_variable_get(:@@languages)).to be_nil
       all_languages = Language.all
-      expect(Language.class_variable_get(:@@languages)).to be_a Hash
+      expect(Language.class_variable_get(:@@languages)).to be_an Hash
       expect(all_languages.count).to eq 75
     end
 
     it "lists all languages" do
+      expect(Language.all).to be_an Array
       expect(Language.all.count).to eq 75
     end
   end

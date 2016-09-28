@@ -12,7 +12,7 @@ class Language
       end
     end
 
-    @@languages
+    @@languages.values
   end
 
   def self.find_by_bcp47(bcp47)

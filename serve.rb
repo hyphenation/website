@@ -1,6 +1,10 @@
 require 'sinatra'
 require File.expand_path('../lib/hyphwebsite/serve', __FILE__)
 
+get '/' do
+  render :index
+end
+
 get '/test-patterns' do
   fetch_languages
   @word = ''
@@ -19,4 +23,8 @@ end
 
 def fetch_languages
   @languages = Language.all.sort { |a, b| a.bcp47 <=> b.bcp47 }
+end
+
+get '/relicensing' do
+  haml :relicensing
 end

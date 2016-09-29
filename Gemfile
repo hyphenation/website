@@ -45,3 +45,6 @@ end
 
 # FIXME Should be taken care of by Hydra
 gem 'unicode_utils'
+
+gem 'sinatra'
+gem 'thin'

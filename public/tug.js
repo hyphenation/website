@@ -18,16 +18,16 @@
 			}
 		});
 		nav.html(links);
-		
+
 		Hyphenator.config({
 			displaytogglebox: false,
 		});
 		Hyphenator.addExceptions('de', 'Groß-va-ter');
 		Hyphenator.run();
-		
+
 		//$('#HyphenatorToggleBox').css('right:100px;');
-    }); 
-    
+    });
+
 	function goHome() {
 		$('#navigation a').show();
 	}
@@ -38,7 +38,7 @@
 		$('div.section').hide();
 		$('div.section#'+name).show();
 	}
-	
+
 	function LoadSample(selector) {
 		if (selector.value.match(/(cs|de|en|fr|fi|pl)/i)) {
 			$.get('sample-'+selector.value+'.html', {}, function(data){
@@ -51,4 +51,3 @@
 			alert('No fiddling with the code!');
 		}
 	}
-	

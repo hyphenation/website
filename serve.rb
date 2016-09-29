@@ -2,7 +2,7 @@ require 'sinatra'
 require File.expand_path('../lib/hyphwebsite/serve', __FILE__)
 
 get '/' do
-  render :index
+  erb :index
 end
 
 get '/test-patterns' do

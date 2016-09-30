@@ -1,4 +1,5 @@
 require 'sinatra'
+require 'tilt/haml'
 require File.expand_path('../lib/hyphwebsite/serve', __FILE__)
 
 get '/' do

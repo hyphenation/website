@@ -6,6 +6,10 @@ get '/' do
   haml :index
 end
 
+get '/tex' do
+  haml :tex
+end
+
 get '/test-patterns' do
   fetch_languages
   @word = ''

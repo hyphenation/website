@@ -1,6 +1,9 @@
 require 'sinatra'
 require 'tilt/haml'
-require File.expand_path('../lib/hyphwebsite/serve', __FILE__)
+require File.expand_path('../../../lib/hyphwebsite/serve', __FILE__)
+
+class Application < Sinatra::Application
+  def self.call(ignore)
 
 get '/' do
   haml :index
@@ -28,4 +31,6 @@ end
 
 get '/relicensing' do
   haml :relicensing
+end
+  end
 end

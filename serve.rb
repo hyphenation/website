@@ -1,5 +1,5 @@
 require 'sinatra'
-require 'tilt/haml'
+require 'haml'
 require_relative 'lib/hyphwebsite'
 
 get '/' do

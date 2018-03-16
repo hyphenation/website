@@ -151,8 +151,14 @@
 
     %div.section#languages
       %h3 Languages
-      %p The package contains patterns for the following languages:
-      %p (if patterns for any other language exist and are missing below please let us know)
+      %p The list of supported languages is in the table below.
+      %p Some languages have more complete documentation in a separate file:
+      %ul
+        %li
+          %a{href: 'http://mirrors.ctan.org/language/hyphenation/dehyph-exptl/dehyph-exptl.pdf'} German
+          %a{href: 'tex-hyphen/hyph-utf8/doc/generic/hyph-utf8/division.pdf'} Spanish
+
+      %p Now the list (if patterns for any other language exist and are missing below please let us know):
 
       - if @languages.count < 16
         %p

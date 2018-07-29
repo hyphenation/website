@@ -51,12 +51,16 @@ module Pages
         code: name.downcase,
         texfile:
         "https://github.com/hyphenation/tex-hyphen/tree/master/hyph-utf8/tex/generic/hyph-utf8/patterns/tex/hyph-#{bcp47}.tex",
-        licences: if lics.empty? then ['<i>custom</i>'] else lics end,
+        licences: if lics.empty? then ['<em>custom</em>'] else lics end,
         lefthyphenmin: lefthmin,
         righthyphenmin: righthmin,
         :'8bitenc' => ['EC', 'QX', 'T2M', 'T2X', 'L4'].choose,
         authors: authors
       }
+    end
+
+    @languages.sort! do |a, b|
+      a[:name] <=> b[:name]
     end
   end
 end

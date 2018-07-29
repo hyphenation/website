@@ -10,6 +10,7 @@ GEM
     rack (1.4.7)
     rack-protection (1.5.3)
       rack
+    rake (12.0.0)
     rspec (3.5.0)
       rspec-core (~> 3.5.0)
       rspec-expectations (~> 3.5.0)
@@ -40,10 +41,14 @@ PLATFORMS
 DEPENDENCIES
   byebug
   haml
+  rake
   rspec
   sinatra
   thin
   unicode_utils
 
+RUBY VERSION
+   ruby 2.4.1p111
+
 BUNDLED WITH
-   1.12.5
+   1.15.1

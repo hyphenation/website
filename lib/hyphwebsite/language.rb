@@ -1,27 +1,25 @@
+require_relative '../pages'
+
+include Pages
+
 class Language
-  @@languages = nil
   @@hyphdir = 'tex-hyphen/hyph-utf8/tex/generic/hyph-utf8/patterns/txt'
   attr_reader :bcp47
 
-  def self.all
-    unless @@languages
-      @@languages = { }
-      Dir.foreach(@@hyphdir) do |file|
-        next unless file =~ /^hyph-(.*)\.pat\.txt$/
-        @@languages[$1] = Language.new($1)
-      end
-    end
+  def initialize(bcp47)
+    @bcp47 = bcp47
+  end
 
-    @@languages.values
+  def self.all
+    @@languages ||= Dir.foreach(@@hyphdir).inject [] do |languages, file|
+      languages << [$1, Language.new($1)] if file =~ /^hyph-(.*)\.pat\.txt$/
+
+      languages
+    end.to_h
   end
 
   def self.find_by_bcp47(bcp47)
-    Language.all
-    @@languages[bcp47]
-  end
-
-  def initialize(bcp47)
-    @bcp47 = bcp47
+    all[bcp47]
   end
 
   def patterns
@@ -30,7 +28,8 @@ class Language
 
   def hyphenate(word)
     unless @hydra
-      @hydra = Hydra.new(patterns)
+      metadata = extract_metadata(File.join(@@hyphdir, '..', 'tex', 'hyph-' + bcp47 + '.tex'))
+      @hydra = Hydra.new(patterns, :lax, '', metadata)
     end
 
     @hydra.showhyphens(word)

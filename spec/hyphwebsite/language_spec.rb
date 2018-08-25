@@ -4,15 +4,12 @@ require 'byebug'
 describe Language do
   describe '.all' do
     it "sets the languages class variable" do
-      expect(Language.class_variable_get(:@@languages)).to be_nil
-      all_languages = Language.all
-      expect(Language.class_variable_get(:@@languages)).to be_an Hash
-      expect(all_languages.count).to eq 76
+      Language.all
+      expect(Language.class_variable_get(:@@languages)).to be_a Hash
     end
 
     it "lists all languages" do
-      expect(Language.all).to be_an Array
-      expect(Language.all.count).to eq 76
+      expect(Language.all.count).to eq 77 # Excluding [no] and [mn-cyrl-x-lmc]
     end
   end
 
@@ -42,7 +39,7 @@ describe Language do
     end
 
     it "calls Language.all first" do
-      expect(Language).to receive(:all)
+      expect(Language).to receive(:all).and_return('dk' => Language.new('dk'))
       dk = Language.find_by_bcp47('dk')
     end
   end

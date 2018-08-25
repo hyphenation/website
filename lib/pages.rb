@@ -34,12 +34,8 @@ module Pages
     # puts ".mainpage returning."
   end
 
-  def parse_tex_file(texfile)
-    bcp47 = texfile.gsub(/^.*\/hyph-/, '').gsub(/\.tex$/, '')
+  def extract_metadata(texfile)
     header = ''
-    # raise MetadataParseError unless bcp47 == 'de-1996'
-    # puts "Reading TeX file #{texfile}."
-    # byebug
     File.read(texfile).each_line do |line|
       break if line =~ /\\patterns|#{@@eohmarker}/
       # puts "Read line #{line}."
@@ -51,6 +47,14 @@ module Pages
     rescue Psych::SyntaxError
       raise MetadataParseError
     end
+  end
+
+  def parse_tex_file(texfile)
+    bcp47 = texfile.gsub(/^.*\/hyph-/, '').gsub(/\.tex$/, '')
+    # raise MetadataParseError unless bcp47 == 'de-1996'
+    # puts "Reading TeX file #{texfile}."
+    # byebug
+    metadata = extract_metadata(texfile)
     raise MetadataParseError unless metadata && metadata['licence']
     name = metadata['language'] && metadata['language']['name'] || ""
     lic = metadata['licence']

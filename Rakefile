@@ -1,11 +1,15 @@
-task default: %w[build]
+require 'rspec/core/rake_task'
+
+task default: %w[spec build]
 
 $LOAD_PATH << File.expand_path('../lib', __FILE__)
 
+task :spec do
+  RSpec::Core::RakeTask.new
+end
+
 task :build do
-  system("cd hydra && git checkout master && git pull --ff-only")
-  system("cd tex-hyphen && git checkout master && git pull --ff-only")
-  system("rspec")
+  system("git submodule update")
   require "pages"
   include Pages
   mainpage

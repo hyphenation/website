@@ -1,6 +1,10 @@
-require 'rspec/core/rake_task'
-
-task default: %w[spec build]
+# if ['development', 'test'].include? ENV['RACK_ENV']
+begin
+  require 'rspec/core/rake_task'
+  task default: %w[spec build]
+rescue LoadError # TODO Something better than that
+  task default: %[build]
+end
 
 $LOAD_PATH << File.expand_path('../lib', __FILE__)
 

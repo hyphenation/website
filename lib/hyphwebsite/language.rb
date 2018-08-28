@@ -28,8 +28,12 @@ class Language
 
   def hyphenate(word)
     unless @hydra
-      metadata = extract_metadata(File.join(@@hyphdir, '..', 'tex', 'hyph-' + bcp47 + '.tex'))
-      @hydra = Hydra.new(patterns, :lax, '', metadata)
+      begin
+        metadata = extract_metadata(File.join(@@hyphdir, '..', 'tex', 'hyph-' + bcp47 + '.tex'))
+        @hydra = Hydra.new(patterns, :lax, '', metadata)
+      rescue MetadataParseError
+        @hydra = Hydra.new(patterns)
+      end
     end
 
     @hydra.showhyphens(word)

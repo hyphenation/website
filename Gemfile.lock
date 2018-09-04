@@ -6,7 +6,7 @@ GIT
 
 GIT
   remote: https://github.com/hyphenation/tex-hyphen
-  revision: f76c09538f9daf2de7178a7f8c457e156dd2b1f4
+  revision: 91a50bdc4609de2344325c2bfd7bcac9ebb122ba
   specs:
     tex-hyphen-patterns (0.0.1)
       hydra

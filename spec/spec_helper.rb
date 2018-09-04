@@ -1,10 +1,6 @@
-# ENV['RAILS_ENV'] = "test"
-# require 'capybara'
 require 'capybara/dsl'
-# require 'capybara/rspec'
 require 'rack/test'
 require 'tex/hyphen/patterns'
-require_relative '../lib/pages'
 
 ENV['RACK_ENV'] = "test"
 

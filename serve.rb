@@ -1,16 +1,22 @@
 require 'sinatra'
 require 'haml'
-require_relative 'lib/pages'
 require 'yaml'
 
-include Pages
+include TeX::Hyphen
 
 get '/' do
   haml :index
 end
 
 get '/tex' do
-  mainpage
+  @languages = Language.all.values.select do |language|
+    begin
+      language.extract_metadata
+      language.licences && language.authors
+    rescue InvalidMetadata
+      false
+    end
+  end.sort
   haml :tex
 end
 

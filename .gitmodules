@@ -1,6 +1,0 @@
-[submodule "tex-hyphen"]
-	path = tex-hyphen
-	url = https://github.com/hyphenation/tex-hyphen.git
-[submodule "hydra"]
-	path = hydra
-	url = https://github.com/hyphenation/hydra.git

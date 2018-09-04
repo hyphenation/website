@@ -1,21 +1,17 @@
-# if ['development', 'test'].include? ENV['RACK_ENV']
+require 'tex/hyphen/patterns'
+include TeX::Hyphen
+
 begin
   require 'rspec/core/rake_task'
-  task default: %w[spec build]
+  task default: %w[spec count_languages]
 rescue LoadError # TODO Something better than that
-  task default: %[build]
+  task default: %[count_languages]
 end
-
-$LOAD_PATH << File.expand_path('../lib', __FILE__)
 
 task :spec do
   RSpec::Core::RakeTask.new
 end
 
-task :build do
-  system("git submodule update")
-  require "pages"
-  include Pages
-  mainpage
-  puts "Languages: #{@languages.map { |lang| lang[:bcp47] }}"
+task :count_languages do
+  puts "Languages: #{Language.all.map { |bcp47, lang| bcp47 }.sort}"
 end

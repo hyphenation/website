@@ -4,7 +4,6 @@
   %input#word{type: 'text', name: 'word', value: "#{@word}", label: 'word'}
   %input{type: 'submit', value: 'hyphenate'}
   %select#bcp47{name: 'bcp47'}
-    %label language tag
     - @languages.each do |language|
       - bcp47 = language.bcp47
       %option{value: "#{bcp47}", selected: bcp47 == @bcp47}

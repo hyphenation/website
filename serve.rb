@@ -1,6 +1,7 @@
 require 'sinatra'
 require 'haml'
 require 'yaml'
+require 'tex/hyphen/patterns'
 
 include TeX::Hyphen
 
@@ -9,14 +10,7 @@ get '/' do
 end
 
 get '/tex' do
-  @languages = Language.all.values.select do |language|
-    begin
-      language.extract_metadata
-      language.licences && language.authors
-    rescue InvalidMetadata
-      false
-    end
-  end.sort
+  @languages = Language.all_with_licence.values.sort
   haml :tex
 end
 

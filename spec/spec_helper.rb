@@ -1,6 +1,5 @@
 require 'capybara/dsl'
 require 'rack/test'
-require 'tex/hyphen/patterns'
 
 ENV['RACK_ENV'] = "test"
 

@@ -183,11 +183,11 @@
             %tr
               %td
                 %strong= language.name
-              %td= language.bcp47
+              %td= (language.name || '').downcase # FIXME Add to TeX file header
               %td
                 %a{href: "#{language.github_link}"}= language.bcp47
               %td= "(#{language.lefthyphenmin}, #{language.righthyphenmin})"
-              -# %td= language[:'8bitenc'] # FIXME Add
+              -# %td= language[:'8bitenc'] # FIXME Add data to TeX file header, and method to module
               %td= language.licences.join(', ')
               %td= language.authors.join('<br />')
 

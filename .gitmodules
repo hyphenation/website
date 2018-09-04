@@ -1,0 +1,6 @@
+[submodule "hydra"]
+	path = hydra
+	url = ./hydra
+[submodule "tex-hyphen"]
+	path = tex-hyphen
+	url = ./tex-hyphen

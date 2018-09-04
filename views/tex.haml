@@ -171,23 +171,25 @@
         %tr
           %td &nbsp;
           %th name, synonyms
-          %td{align: "center"} code<br />(link to file)
-          %td{align: "center"} (left, right)-<br />hyphenmin
-          %td{align: "center"} 8-bit<br />encoding
+          %td{align: "center"}
+            %a{href: 'https://tools.ietf.org/html/bcp47'} BCP 47 tag
+            (link to file)
+          %td{align: "center"} (left, right)­hyphenmin
+          %td{align: "center"} 8-bit­encoding
           %td{align: "center"} licence
           %td{align: "center"} authors
 
           - @languages.each do |language|
             %tr
               %td
-                %strong= language[:name]
-              %td= language[:code]
+                %strong= language.name
+              %td= language.bcp47
               %td
-                %a{href: "#{language[:texfile]}"}= language[:bcp47]
-              %td= "(#{language[:lefthyphenmin]}, #{language[:righthyphenmin]})"
-              %td= language[:'8bitenc']
-              %td= language[:licences].join(', ')
-              %td= language[:authors].join('<br />')
+                %a{href: "#{language.github_link}"}= language.bcp47
+              %td= "(#{language.lefthyphenmin}, #{language.righthyphenmin})"
+              -# %td= language[:'8bitenc'] # FIXME Add
+              %td= language.licences.join(', ')
+              %td= language.authors.join('<br />')
 
 %div#ft
   %p.small

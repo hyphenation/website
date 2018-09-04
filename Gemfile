@@ -14,3 +14,6 @@ end
 
 # FIXME Should be taken care of by Hydra
 gem 'unicode_utils'
+
+gem 'tex-hyphen-patterns', git: 'https://github.com/hyphenation/tex-hyphen'
+gem 'hydra', git: 'https://github.com/hyphenation/hydra'

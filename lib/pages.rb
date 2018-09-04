@@ -1,5 +1,7 @@
 require 'yaml'
 
+include TeX::Hyphen
+
 class Array
   def choose
     self[rand(self.count)]
@@ -12,26 +14,19 @@ module Pages
   @@eohmarker = '=' * 42
 
   def mainpage
-    # puts ".mainpage called."
-    texfiles = File.expand_path('../../tex-hyphen/hyph-utf8/tex/generic/hyph-utf8/patterns/tex/hyph-*.tex', __FILE__)
-    @languages = []
-
-    Dir.glob(texfiles) do |texfile|
-      next unless texfile =~ /.*hyph-.*\.tex$/
+    @languages = Language.all.values.select do |language|
       begin
-        language = parse_tex_file(texfile)
-        # puts "Adding language #{language}"
-        @languages << language
-      rescue MetadataParseError
-        next
+        language.extract_metadata
+        # puts language.bcp47
+        # byebug
+        language.licences && language.authors
+      rescue InvalidMetadata
+        false
       end
-    end
-
+    end.sort
     # byebug
-    @languages.sort! do |a, b|
-      a[:name] <=> b[:name]
-    end
-    # puts ".mainpage returning."
+
+    # puts @languages
   end
 
   def extract_metadata(texfile)

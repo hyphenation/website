@@ -1,3 +1,16 @@
+GIT
+  remote: https://github.com/hyphenation/hydra
+  revision: c3173b482e83770d04259d5b54ed36d761bc44e7
+  specs:
+    hydra (0.0.1)
+
+GIT
+  remote: https://github.com/hyphenation/tex-hyphen
+  revision: f76c09538f9daf2de7178a7f8c457e156dd2b1f4
+  specs:
+    tex-hyphen-patterns (0.0.1)
+      hydra
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -45,9 +58,11 @@ PLATFORMS
 DEPENDENCIES
   byebug
   haml
+  hydra!
   rake
   rspec
   sinatra
+  tex-hyphen-patterns!
   thin
   unicode_utils
 

@@ -1,4 +1,4 @@
-require 'yaml'
+require 'tex/hyphen/patterns'
 
 include TeX::Hyphen
 

@@ -1,6 +1,5 @@
 require 'sinatra'
 require 'haml'
-require_relative 'lib/hyphwebsite'
 require_relative 'lib/pages'
 require 'yaml'
 

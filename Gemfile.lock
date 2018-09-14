@@ -6,9 +6,9 @@ GIT
 
 GIT
   remote: https://github.com/hyphenation/tex-hyphen
-  revision: 5e539a290ac40ea2954e8e97038c1c714623c157
+  revision: 8f9efe4b389cada1924ff8d5b6052e8cbd8d13fb
   specs:
-    tex-hyphen-patterns (0.0.1)
+    tex-hyphen-language (0.0.6)
       hydra
 
 GEM
@@ -82,7 +82,7 @@ DEPENDENCIES
   rake
   rspec
   sinatra
-  tex-hyphen-patterns!
+  tex-hyphen-language!
   thin
   unicode_utils
 
@@ -90,4 +90,4 @@ RUBY VERSION
    ruby 2.4.1p111
 
 BUNDLED WITH
-   1.15.1
+   1.16.2

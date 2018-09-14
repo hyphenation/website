@@ -1,7 +1,7 @@
 require 'sinatra'
 require 'haml'
 require 'yaml'
-require 'tex/hyphen/patterns'
+require 'tex/hyphen/language'
 
 include TeX::Hyphen
 

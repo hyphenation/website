@@ -182,8 +182,8 @@
           - @languages.each do |language|
             %tr
               %td
-                %strong= language.name
-              %td= (language.name || '').downcase # FIXME Add to TeX file header
+                %strong= language.babelname
+              %td= (language.babelname || '').downcase # FIXME Add to TeX file header
               %td
                 %a{href: "#{language.github_link}"}= language.bcp47
               %td= "(#{language.lefthyphenmin}, #{language.righthyphenmin})"

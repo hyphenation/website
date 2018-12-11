@@ -10,7 +10,7 @@ get '/' do
 end
 
 get '/tex' do
-  @languages = Language.all_with_licence.values.sort
+  @languages = Language.all.sort
   haml :tex
 end
 

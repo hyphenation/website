@@ -2,8 +2,10 @@ require 'sinatra'
 require 'haml'
 require 'yaml'
 require 'tex/hyphen/language'
+require 'tex/hyphen/texlive'
 
 include TeX::Hyphen
+include TeXLive
 
 get '/' do
   haml :index
@@ -11,6 +13,7 @@ end
 
 get '/tex' do
   @languages = Language.all.sort
+  @packages = Package.all.sort
   haml :tex
 end
 

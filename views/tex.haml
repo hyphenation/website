@@ -179,7 +179,21 @@
           %td{align: "center"} licence
           %td{align: "center"} authors
 
+          - @packages.each do |package|
+            - package.languages.each_with_index do |language, i|
+              %tr
+                %td
+                  - if i == 0
+                    %strong= package.name.titlecase
+                %td= ([language.babelname] + language.synonyms).join ', '
+                %td
+                  %a{href: "#{language.github_link}"}= language.bcp47
+                %td= "(#{language.lefthyphenmin}, #{language.righthyphenmin})"
+                %td= language.encoding.upcase if language.encoding
+                %td= language.licences.join ', '
+                %td= language.authors.join '<br />'
           - @languages.each do |language|
+            - next unless language.patterns.count > 0
             %tr
               %td
                 %strong= language.babelname

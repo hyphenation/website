@@ -34,7 +34,7 @@ post '/test-patterns' do
 end
 
 def fetch_languages
-  @languages = Language.all.sort { |a, b| a.first <=> b.first }.map(&:last)
+  @languages = Language.all#.sort { |a, b| a.first <=> b.first }.map(&:last)
 end
 
 get '/relicensing' do

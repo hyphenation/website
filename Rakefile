@@ -13,5 +13,5 @@ task :spec do
 end
 
 task :count_languages do
-  puts "Languages: #{Language.all.map { |bcp47, lang| bcp47 }.sort}"
+  puts "Languages: #{Language.all.map(&:bcp47) }.sort}"
 end

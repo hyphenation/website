@@ -179,12 +179,12 @@
           %td{align: "center"} licence
           %td{align: "center"} authors
 
-          - @packages.each do |package|
-            - package.languages.each_with_index do |language, i|
+          - @packages.each do |iso639, languages|
+            - languages.each_with_index do |language, i|
               %tr
                 %td
                   - if i == 0
-                    %strong= package.name.titlecase
+                    %strong= iso639
                 %td= ([language.babelname] + language.synonyms).join ', '
                 %td
                   %a{href: "#{language.github_link}"}= language.bcp47

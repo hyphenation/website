@@ -13,7 +13,7 @@ end
 
 get '/tex' do
   @languages = Language.all.sort
-  @packages = Package.all.sort
+  @packages = Language.all_by_iso639
   haml :tex
 end
 

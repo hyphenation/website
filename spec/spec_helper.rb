@@ -11,8 +11,6 @@ module RSpecMixin
   Capybara.app = Sinatra::Application
 end
 
-include Capybara::DSL
-
 RSpec.configure do |config|
   config.include RSpecMixin
 end

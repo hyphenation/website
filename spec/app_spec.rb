@@ -24,6 +24,8 @@ describe "Hyphenation.org Sinatra application" do
   end
 
   describe "integration tests" do
+    include Capybara::DSL
+
     it "can hyphenate words" do
       visit '/test-patterns'
       fill_in 'word', with: 'aardvark'

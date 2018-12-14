@@ -14,12 +14,22 @@ end
 class Language
   def dirtyname
     case @bcp47
-    when 'no'
+    when 'nb'
       "Norwegian"
-    when 'la'
+    when 'cu'
+      "Church Slavonic"
+    when 'la-x-classic'
       "Latin"
-    when 'grc'
+    when 'fa'
+      "Persian"
+    when 'grc-x-ibycus'
       "Ancient Greek"
+    when 'sh-cyrl'
+      "Serbian"
+    when 'hsb'
+      "Upper Sorbian"
+    when 'en-us'
+      "English"
     else
       babelname
     end

@@ -1,4 +1,5 @@
 require 'sinatra'
+require 'byebug'
 require 'haml'
 require 'yaml'
 require 'tex/hyphen/language'
@@ -14,7 +15,11 @@ end
 class Language
   def dirtyname
     case @bcp47
+    when 'no'
+      "Norwegian"
     when 'nb'
+      "Norwegian"
+    when 'nn'
       "Norwegian"
     when 'cu'
       "Church Slavonic"
@@ -37,7 +42,7 @@ class Language
 end
 
 get '/tex' do
-  @packages = Language.all_by_iso639.sort { |a, b| (a.last.first.babelname || '') <=> (b.last.first.babelname || '') }
+  @packages = Language.all_by_iso639.sort { |a, b| byebug; a.last.first.dirtyname <=> b.last.first.dirtyname }
   haml :tex
 end
 

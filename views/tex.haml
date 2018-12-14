@@ -185,18 +185,6 @@
                 %td= language.encoding.upcase if language.encoding
                 %td= language.licences.join ', '
                 %td= language.authors.join '<br />'
-          - @languages.each do |language|
-            - next unless language.patterns.count > 0
-            %tr
-              %td
-                %strong= language.babelname
-              %td= (language.babelname || '').downcase # FIXME Add to TeX file header
-              %td
-                %a{href: "#{language.github_link}"}= language.bcp47
-              %td= "(#{language.lefthyphenmin}, #{language.righthyphenmin})"
-              -# %td= language[:'8bitenc'] # FIXME Add data to TeX file header, and method to module
-              %td= language.licences.join(', ')
-              %td= language.authors.join('<br />')
 
 %div#ft
   %p.small

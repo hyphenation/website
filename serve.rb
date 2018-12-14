@@ -13,7 +13,7 @@ end
 
 get '/tex' do
   @languages = Language.all.sort { |a, b| (a.babelname || '') <=> (b.babelname || '') }
-  @packages = Language.all_by_iso639
+  @packages = Language.all_by_iso639.sort { |a, b| (a.last.first.babelname || '') <=> (b.last.first.babelname || '') }
   haml :tex
 end
 

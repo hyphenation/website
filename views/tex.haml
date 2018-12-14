@@ -177,7 +177,7 @@
               %tr
                 %td
                   - if i == 0
-                    %strong= (language.babelname || '').titlecase
+                    %strong= (language.dirtyname || '').titlecase
                 %td= ([language.babelname] + language.synonyms).join ', '
                 %td
                   %a{href: "#{language.github_link}"}= language.bcp47

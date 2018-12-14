@@ -13,13 +13,16 @@ end
 
 class Language
   def dirtyname
-  if @bcp47 == 'no'
-    "Norwegian"
-  elsif @bcp47 == 'la'
-    "Latin"
-  elsif bcp47 == 'grc'
-    "Ancient Greek"
-  else
+    case @bcp47
+    when 'no'
+      "Norwegian"
+    when 'la'
+      "Latin"
+    when 'grc'
+      "Ancient Greek"
+    else
+      babelname
+    end
   end
 end
 

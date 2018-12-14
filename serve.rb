@@ -11,6 +11,18 @@ get '/' do
   haml :index
 end
 
+class Language
+  def dirtyname
+  if @bcp47 == 'no'
+    "Norwegian"
+  elsif @bcp47 == 'la'
+    "Latin"
+  elsif bcp47 == 'grc'
+    "Ancient Greek"
+  else
+  end
+end
+
 get '/tex' do
   @packages = Language.all_by_iso639.sort { |a, b| (a.last.first.babelname || '') <=> (b.last.first.babelname || '') }
   haml :tex

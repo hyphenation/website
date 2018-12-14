@@ -12,7 +12,7 @@ get '/' do
 end
 
 get '/tex' do
-  @languages = Language.all.sort
+  @languages = Language.all.sort { |a, b| (a.babelname || '') <=> (b.babelname || '') }
   @packages = Language.all_by_iso639
   haml :tex
 end

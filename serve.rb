@@ -1,5 +1,4 @@
 require 'sinatra'
-require 'byebug'
 require 'haml'
 require 'yaml'
 require 'tex/hyphen/language'
@@ -42,7 +41,7 @@ class Language
 end
 
 get '/tex' do
-  @packages = Language.all_by_iso639.sort { |a, b| byebug; a.last.first.dirtyname <=> b.last.first.dirtyname }
+  @packages = Language.all_by_iso639.sort { |a, b| puts a.last.first.dirtyname, b.last.first.dirtyname; a.last.first.dirtyname <=> b.last.first.dirtyname }
   haml :tex
 end
 

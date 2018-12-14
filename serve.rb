@@ -35,13 +35,13 @@ class Language
     when 'en-us'
       "English"
     else
-      babelname
+      babelname.titlecase
     end
   end
 end
 
 get '/tex' do
-  @packages = Language.all_by_iso639.sort { |a, b| puts a.last.first.dirtyname, b.last.first.dirtyname; a.last.first.dirtyname <=> b.last.first.dirtyname }
+  @packages = Language.all_by_iso639.sort { |a, b| a.last.first.dirtyname <=> b.last.first.dirtyname }
   haml :tex
 end
 

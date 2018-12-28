@@ -3,45 +3,33 @@ require 'haml'
 require 'yaml'
 require 'tex/hyphen/language'
 require 'tex/hyphen/texlive'
+require 'bcp47'
 
 include TeX::Hyphen
 include TeXLive
+include BCP47
 
 get '/' do
   haml :index
 end
 
 class Language
-  def dirtyname
+  def name
     case @bcp47
-    when 'no'
-      "Norwegian"
-    when 'nb'
-      "Norwegian"
-    when 'nn'
-      "Norwegian"
-    when 'cu'
-      "Church Slavonic"
-    when 'la-x-classic'
-      "Latin"
-    when 'fa'
-      "Persian"
     when 'grc-x-ibycus'
       "Ancient Greek"
     when 'sh-cyrl'
       "Serbian"
-    when 'hsb'
-      "Upper Sorbian"
-    when 'en-us'
-      "English"
     else
-      babelname.titlecase
+      code = iso639
+      code = Registry.subtags[code].macrolanguage while Registry.subtags[code].macrolanguage
+      Registry[code].descriptions.first
     end
   end
 end
 
 get '/tex' do
-  @packages = Language.all_by_iso639.sort { |a, b| a.last.first.dirtyname <=> b.last.first.dirtyname }
+  @packages = Language.all_by_iso639.sort { |a, b| a.last.first.name <=> b.last.first.name }
   haml :tex
 end
 

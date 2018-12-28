@@ -160,13 +160,6 @@
 
       %p (if patterns for any other language exist and are missing below please let us know)
 
-      - if @languages.count < 16
-        %p
-          %i
-            This list is very incomplete; the full list of supported languages will be displayed when
-            Mojca lets me merge the
-            %a{href: 'https://github.com/hyphenation/tex-hyphen/pull/1'} pull request
-            &#x2d;- Arthur.
       %table{border: "1"}
         %tr
           %td &nbsp;
@@ -179,17 +172,19 @@
           %td{align: "center"} licence
           %td{align: "center"} authors
 
-          - @languages.each do |language|
-            %tr
-              %td
-                %strong= language.name
-              %td= (language.name || '').downcase # FIXME Add to TeX file header
-              %td
-                %a{href: "#{language.github_link}"}= language.bcp47
-              %td= "(#{language.lefthyphenmin}, #{language.righthyphenmin})"
-              -# %td= language[:'8bitenc'] # FIXME Add data to TeX file header, and method to module
-              %td= language.licences.join(', ')
-              %td= language.authors.join('<br />')
+          - @packages.each do |iso639, languages|
+            - languages.sort { |a, b| a.bcp47 <=> b.bcp47 }.each_with_index do |language, i|
+              %tr
+                %td
+                  - if i == 0
+                    %strong= language.name
+                %td= ([language.babelname] + language.synonyms).join ', '
+                %td
+                  %a{href: "#{language.github_link}"}= language.bcp47
+                %td= "(#{language.lefthyphenmin}, #{language.righthyphenmin})"
+                %td= language.encoding.upcase if language.encoding
+                %td= language.licences.join ', '
+                %td= language.authors.join '<br />'
 
 %div#ft
   %p.small

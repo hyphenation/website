@@ -2,15 +2,38 @@ require 'sinatra'
 require 'haml'
 require 'yaml'
 require 'tex/hyphen/language'
+require 'tex/hyphen/texlive'
+require 'bcp47'
 
 include TeX::Hyphen
+include TeXLive
+include BCP47
 
 get '/' do
   haml :index
 end
 
+class Language
+  def name
+    return 'Ethiopic' if @bcp47 == 'mul-ethi'
+    code = iso639
+
+    case code
+    when 'hr'
+      "Croatian"
+    when 'sh'
+      "Serbian"
+    else
+      code = Registry.subtags[code].macrolanguage while Registry.subtags[code].macrolanguage
+      Registry[code].descriptions.first.gsub /\s*\(.*\)\s*$/, ''
+    end
+  end
+end
+
 get '/tex' do
-  @languages = Language.all_with_licence.values.sort
+  @packages = Language.all_by_iso639
+  ['nb', 'nn'].each { |bcp47| @packages['no'] += @packages.delete(bcp47) }
+  @packages = @packages.sort { |a, b| a.last.first.name <=> b.last.first.name }
   haml :tex
 end
 
@@ -31,7 +54,7 @@ post '/test-patterns' do
 end
 
 def fetch_languages
-  @languages = Language.all.sort { |a, b| a.first <=> b.first }.map(&:last)
+  @languages = Language.all.sort
 end
 
 get '/relicensing' do

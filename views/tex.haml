@@ -173,7 +173,7 @@
           %td{align: "center"} authors
 
           - @packages.each do |iso639, languages|
-            - languages.each_with_index do |language, i|
+            - languages.sort { |a, b| a.bcp47 <=> b.bcp47 }.each_with_index do |language, i|
               %tr
                 %td
                   - if i == 0

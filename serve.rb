@@ -15,21 +15,24 @@ end
 
 class Language
   def name
-    case @bcp47
-    when 'grc-x-ibycus'
-      "Ancient Greek"
-    when 'sh-cyrl'
+    return 'Ethiopic' if @bcp47 == 'mul-ethi'
+    code = iso639
+    case iso639
+    when 'hr'
+      "Croatian"
+    when 'sh'
       "Serbian"
     else
-      code = iso639
       code = Registry.subtags[code].macrolanguage while Registry.subtags[code].macrolanguage
-      Registry[code].descriptions.first
+      Registry[code].descriptions.first.gsub /\s*\(.*\)\s*$/, ''
     end
   end
 end
 
 get '/tex' do
-  @packages = Language.all_by_iso639.sort { |a, b| a.last.first.name <=> b.last.first.name }
+  @packages = Language.all_by_iso639
+  ['nb', 'nn'].each { |bcp47| @packages['no'] += @packages.delete(bcp47) }
+  @packages = @packages.sort { |a, b| Registry[a.first].descriptions.first <=> Registry[b.first].descriptions.first }
   haml :tex
 end
 

@@ -33,7 +33,7 @@ end
 get '/tex' do
   @packages = Language.all_by_iso639
   ['nb', 'nn'].each { |bcp47| @packages['no'] += @packages.delete(bcp47) }
-  @packages = @packages.sort { |a, b| Registry[a.first].descriptions.first <=> Registry[b.first].descriptions.first }
+  @packages = @packages.sort { |a, b| a.last.first.name <=> b.last.first.name }
   haml :tex
 end
 

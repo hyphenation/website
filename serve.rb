@@ -17,7 +17,8 @@ class Language
   def name
     return 'Ethiopic' if @bcp47 == 'mul-ethi'
     code = iso639
-    case iso639
+
+    case code
     when 'hr'
       "Croatian"
     when 'sh'

@@ -60,3 +60,13 @@ end
 get '/relicensing' do
   haml :relicensing
 end
+
+get '/known-bugs' do
+  @known_bugs = Language.all.select do |language|
+    language.known_bugs
+  end.map do |language|
+    [language.bcp47, language.known_bugs]
+  end
+
+  haml :known_bugs
+end

@@ -1,0 +1,9 @@
+%h2 Known bugs
+
+- @known_bugs.each do |bug|
+  %h3= bug.first
+  %table
+  - bug.last.each do |error, comment|
+    %td
+      %tr= error
+      %tr= comment

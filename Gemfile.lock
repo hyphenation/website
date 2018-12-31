@@ -13,9 +13,9 @@ GIT
 
 GIT
   remote: https://github.com/reutenauer/ruby-bcp47
-  revision: b68c31eb02f0f5b3f810180396fbf127458d42cf
+  revision: c837d7d124883d9cf16663aade4b681a04c30d56
   specs:
-    bcp47 (0.0.5)
+    bcp47 (0.06.0)
 
 GEM
   remote: https://rubygems.org/

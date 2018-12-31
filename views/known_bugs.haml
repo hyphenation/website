@@ -4,7 +4,7 @@ We list a small number of “known bugs” in pattern sets, that are unlikely t
 corrected because it’s hard to update them, for compatibility reasons.
 
 - @known_bugs.each do |bug|
-  %h3= bug.first
+  %h3= Tag.new(bug.first).bureaucratic_name
   %table
   - bug.last.each do |error, comment|
     %td

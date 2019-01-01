@@ -6,9 +6,9 @@ GIT
 
 GIT
   remote: https://github.com/hyphenation/tex-hyphen
-  revision: dce23b4eb2df218ec6893b851562316d7cf37355
+  revision: d6719a123e33d59223858e800fcd74f7df4a9163
   specs:
-    tex-hyphen-language (0.11.2)
+    tex-hyphen-language (0.11.3)
       hydra
 
 GIT

@@ -14,9 +14,6 @@ group :test, :development do
   gem 'capybara'
 end
 
-# FIXME Should be taken care of by Hydra
-gem 'unicode_utils'
-
 gem 'tex-hyphen-language', git: 'https://github.com/hyphenation/tex-hyphen'
 gem 'hydra', git: 'https://github.com/hyphenation/hydra'
 gem 'bcp47', git: 'https://github.com/reutenauer/ruby-bcp47'

@@ -10,7 +10,7 @@ include TeXLive
 include BCP47
 
 get '/' do
-  haml :index
+  redirect '/tex', 307
 end
 
 class Language

@@ -4,7 +4,7 @@ describe "Hyphenation.org Sinatra application" do
   describe "basic tests" do
     it "doesn’t crash on the landing page" do
       get '/'
-      expect(last_response).to be_ok
+      expect(last_response.status).to eq 307
     end
 
     it "doesn’t crash on the main page" do
